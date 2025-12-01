@@ -3,6 +3,8 @@ Capy UI Theme for Kagi Search
 
 This is a port of Mastodon Capy UI (Single Column CSS) for Kagi Search Custom CSS.
 
+Currently requires Dark Mode enabled in Kagi.  Will expand it to not require that in future.
+
 ## Screenshots
 
 ### Search Page
