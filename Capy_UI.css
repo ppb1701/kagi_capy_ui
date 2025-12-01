@@ -1,0 +1,847 @@
+/************************************************************
+ * Kagi Capy UI (1.0.0) 2025-12-1
+ * - Tricorn Black bg (#1c1d21)
+ * - Onyx surfaces (#36383f)  
+ * - Electric blue accent (#1e80c7)
+ * - 16px / 32px rounding
+ * - Capybara mascot logo inside search field
+ ************************************************************/
+
+/* ----------------------------------------------------------
+   0. Core Capy variables
+   ---------------------------------------------------------- */
+
+:root {
+  --capy-bg: #1c1d21 !important;
+  --capy-surface: #36383f !important;
+  --capy-surface-soft: #23232a !important;
+  --capy-border: #38384d !important;
+
+  --capy-accent: #1e80c7 !important;
+  --capy-accent-soft: rgba(30, 128, 199, 0.18) !important;
+  --capy-accent-strong: #2191e6 !important;
+
+  --capy-text: #f7f9f9 !important;
+  --capy-text-dim: #8bb4d8 !important;
+
+  --capy-radius: 16px !important;
+  --capy-radius-big: 32px !important;
+
+  --capy-font-size: 15px !important;
+  --capy-font-size-small: 13px !important;
+  --capy-font-size-tiny: 12px !important;
+  --capy-font-size-big: 17px !important;
+  --capy-font-weight-regular: 400 !important;
+  --capy-font-weight-semibold: 500 !important;
+
+  --capy-gap: 12px !important;
+
+  /* Override Kagi's default highlight colors */
+  --kagi-highlight: #1e80c7 !important;
+  --source-highlight-color: #1e80c7 !important;
+  --nav_n_se_line: #1e80c7 !important;
+  --nav_n_im_line: #1e80c7 !important;
+  --nav_n_vi_line: #1e80c7 !important;
+  --nav_n_ne_line: #1e80c7 !important;
+  --nav_n_ma_line: #1e80c7 !important;
+  --nav_n_po_line: #1e80c7 !important;
+  --nav-active-color: #1e80c7 !important;
+  --tab-active-color: #1e80c7 !important;
+  --tab-active-border: #1e80c7 !important;
+}
+
+/* ----------------------------------------------------------
+   1. Global page reset (dark + gradient)
+   ---------------------------------------------------------- */
+
+html,
+body {
+  background-color: var(--capy-bg) !important;
+  background-image:
+    radial-gradient(circle at top,
+      rgba(30, 128, 199, 0.23),
+      transparent 60%) !important;
+  color: var(--capy-text) !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif !important;
+  font-size: var(--capy-font-size) !important;
+}
+
+#layout-v2,
+#app,
+#root,
+#__next,
+.app-root,
+main,
+.content,
+.app-box-center,
+.center-content-box,
+.search-results,
+.serp-container,
+[class*="results"],
+[class*="serp"],
+[class*="layout"],
+[id*="layout"],
+[id*="main"],
+[class*="main"],
+div[class*="container"],
+.search-form-wrapper,
+.search_form_box {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: var(--capy-text) !important;
+}
+
+/* Force gradient background on all pages */
+body::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: var(--capy-bg) !important;
+  background-image: radial-gradient(circle at top, rgba(30, 128, 199, 0.23), transparent 60%) !important;
+  z-index: -9999 !important;
+  pointer-events: none !important;
+}
+
+/* Ensure body itself also has the gradient as fallback */
+body {
+  background-attachment: fixed !important;
+}
+
+p, span, li, div {
+  color: inherit;
+}
+
+/* ----------------------------------------------------------
+   2. Cards / surfaces (results, widgets, etc.)
+   ---------------------------------------------------------- */
+
+.card__face,
+._0_SRI.search-result,
+._0_provider-content.inline-content.clearfix,
+.wikipediaResult,
+.newsResultBody,
+._0_right-box,
+.section,
+.panel,
+.k-card {
+  background-color: var(--capy-surface) !important;
+  background-image: none !important;
+  border-radius: var(--capy-radius) !important;
+  border: 1px solid var(--capy-border) !important;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.7) !important;
+}
+
+._0_SRI.search-result {
+  margin-bottom: var(--capy-gap) !important;
+  padding: 12px 16px !important;
+}
+
+._0_DESC,
+.newsResultBody,
+._0_URL_VISIBLE,
+._0_result-snippet,
+.card__face ._0_snippet {
+  color: var(--capy-text-dim) !important;
+}
+
+/* ----------------------------------------------------------
+   3. Links, titles, quotes
+   ---------------------------------------------------------- */
+
+a,
+.__sri_title_link,
+.newsResultTitle a,
+.card__face a {
+  color: var(--capy-accent) !important;
+  text-decoration: none !important;
+}
+
+a:hover,
+.__sri_title_link:hover,
+.newsResultTitle a:hover {
+  color: var(--capy-accent-strong) !important;
+  text-decoration: underline !important;
+}
+
+.__sri_title_link {
+  font-size: var(--capy-font-size-big) !important;
+  font-weight: var(--capy-font-weight-semibold) !important;
+}
+
+._0_URL_VISIBLE {
+  font-size: var(--capy-font-size-tiny) !important;
+}
+
+._0_result-snippet blockquote::before,
+blockquote::before {
+  background-color: var(--capy-accent) !important;
+  color: var(--capy-accent) !important;
+}
+
+/* ----------------------------------------------------------
+   4. Top nav (Web / Images / etc tabs)
+   ---------------------------------------------------------- */
+
+.app-nav {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--capy-border) !important;
+  box-shadow: none !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  white-space: nowrap !important;
+}
+
+.app-nav::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Style all nav items consistently */
+a.nav_item,
+._0_item,
+.nav_item,
+.app-nav a,
+.app-nav button {
+  font-size: var(--capy-font-size-small) !important;
+  color: var(--capy-text-dim) !important;
+  background: transparent !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  padding: 8px 16px !important;
+  margin-right: 0 !important;
+  transition: color 0.18s ease, border-bottom-color 0.18s ease !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  text-decoration: none !important;
+}
+
+a.nav_item:hover,
+._0_item:hover,
+.nav_item:hover,
+.app-nav a:hover,
+.app-nav button:hover {
+  background: transparent !important;
+  color: var(--capy-text) !important;
+  border-bottom-color: var(--capy-text-dim) !important;
+}
+
+a.nav_item.--active,
+._0_item.--active,
+.nav_item.--active,
+.app-nav a.--active,
+.app-nav button.--active,
+a[aria-current="page"],
+button[aria-current="page"] {
+  background: transparent !important;
+  color: var(--capy-accent) !important;
+  border-bottom: 2px solid var(--capy-accent) !important;
+  font-weight: var(--capy-font-weight-semibold) !important;
+}
+
+.top_nav_links a {
+  color: var(--capy-text-dim) !important;
+}
+
+/* ----------------------------------------------------------
+   5. Search bar styling
+   ---------------------------------------------------------- */
+
+/* Container styling */
+div.search-form-wrapper > div.search_form_box > #searchForm >
+  .search-input-container._0_search-input-container._0_no_multiline,
+div.center-content-box > div.search_form_box > #searchForm >
+  .search-input-container._0_search-input-container._0_no_multiline,
+.search-input-container {
+  background-color: var(--capy-surface) !important;
+  background-image: none !important;
+  border-radius: var(--capy-radius-big) !important;
+  border: 1px solid var(--capy-border) !important;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Search input styling */
+input#searchBar,
+input[type="search"],
+input.search-input {
+  background-color: transparent !important;
+  color: var(--capy-text) !important;
+  border: none !important;
+}
+
+/* Capy logo positioned beside the search field */
+.search-input-container::after,
+.search-input-container._0_search-input-container._0_no_multiline::after {
+  content: "" !important;
+  position: absolute !important;
+  right: 100px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 28px !important;
+  height: 28px !important;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 100 100"%3E%3C!-- Capybara body --%3E%3Cellipse cx="50" cy="58" rx="28" ry="24" fill="%23c9a87a" stroke="%231e80c7" stroke-width="2.5"/%3E%3C!-- Capybara head --%3E%3Ccircle cx="50" cy="35" r="18" fill="%23c9a87a" stroke="%231e80c7" stroke-width="2.5"/%3E%3C!-- Ears --%3E%3Cellipse cx="40" cy="24" rx="5" ry="8" fill="%23c9a87a" stroke="%231e80c7" stroke-width="2"/%3E%3Cellipse cx="60" cy="24" rx="5" ry="8" fill="%23c9a87a" stroke="%231e80c7" stroke-width="2"/%3E%3C!-- Eyes --%3E%3Ccircle cx="44" cy="32" r="2.5" fill="%23000000"/%3E%3Ccircle cx="56" cy="32" r="2.5" fill="%23000000"/%3E%3C!-- Nose --%3E%3Cellipse cx="50" cy="40" rx="4" ry="3" fill="%23704f3d"/%3E%3C!-- Smile --%3E%3Cpath d="M 46 42 Q 50 44 54 42" stroke="%23704f3d" stroke-width="2" fill="none"/%3E%3C!-- Front legs --%3E%3Crect x="38" y="75" width="8" height="15" rx="4" fill="%23c9a87a" stroke="%231e80c7" stroke-width="2"/%3E%3Crect x="54" y="75" width="8" height="15" rx="4" fill="%23c9a87a" stroke="%231e80c7" stroke-width="2"/%3E%3C!-- Smartphone in hand --%3E%3Crect x="62" y="50" width="14" height="22" rx="2" fill="%231e80c7" stroke="%23000000" stroke-width="2"/%3E%3Crect x="64" y="52" width="10" height="16" fill="%23ffffff"/%3E%3Ccircle cx="69" cy="70" r="1.5" fill="%23cccccc"/%3E%3C!-- Stuffed elephant on head --%3E%3C!-- Elephant body --%3E%3Cellipse cx="50" cy="12" rx="7" ry="5" fill="%23ff9955" stroke="%231e80c7" stroke-width="1.5"/%3E%3C!-- Elephant head --%3E%3Ccircle cx="50" cy="8" r="4" fill="%23ff9955" stroke="%231e80c7" stroke-width="1.5"/%3E%3C!-- Elephant trunk --%3E%3Cpath d="M 50 10 Q 48 13 49 15" stroke="%23ff9955" stroke-width="3" fill="none" stroke-linecap="round"/%3E%3C!-- Elephant ears --%3E%3Cellipse cx="47" cy="7" rx="2" ry="3" fill="%23ff9955" stroke="%231e80c7" stroke-width="1"/%3E%3Cellipse cx="53" cy="7" rx="2" ry="3" fill="%23ff9955" stroke="%231e80c7" stroke-width="1"/%3E%3C!-- Elephant eyes --%3E%3Ccircle cx="48" cy="7" r="0.8" fill="%23000000"/%3E%3Ccircle cx="52" cy="7" r="0.8" fill="%23000000"/%3E%3C/svg%3E') !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-position: center !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
+}
+
+/* Make sure containers have position relative and proper padding */
+.search-input-container,
+.search-input-container._0_search-input-container._0_no_multiline {
+  position: relative !important;
+  padding-right: 125px !important;
+}
+
+/* Ensure search input has padding to prevent text overlap with icons */
+input#searchBar,
+input[type="search"],
+input.search-input {
+  padding-right: 125px !important;
+}
+
+/* Generic inputs */
+input[type="text"][name*="query"],
+input[type="text"][placeholder*="fetch"],
+input[type="text"][placeholder*="search"],
+input[type="text"][placeholder*="Search"] {
+  background-color: var(--capy-surface) !important;
+  border-radius: var(--capy-radius-big) !important;
+  border: 1px solid var(--capy-border) !important;
+  color: var(--capy-text) !important;
+}
+
+/* Keep icons at reasonable sizes - but not logos */
+.search-input-container svg,
+.search-input-container img[src*="icon"],
+.search-input-container img[src*="shield"],
+.search-input-container img[alt*="secure"],
+._0_SRI svg,
+._0_SRI img[src*="icon"],
+._0_SRI img[src*="shield"],
+button svg,
+button img[src*="icon"] {
+  max-width: 20px !important;
+  max-height: 20px !important;
+}
+
+/* Keep Kagi branding at normal size */
+.kagi-logo,
+[class*="logo"],
+header img,
+header svg,
+nav > img,
+nav > svg {
+  max-width: none !important;
+  max-height: none !important;
+}
+
+/* Focus states */
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.search-input-container:focus-within,
+.search-input-container._0_search-input-container._0_no_multiline:focus-within {
+  border-color: var(--capy-accent) !important;
+  box-shadow: 0 0 0 2px rgba(30, 128, 199, 0.6) !important;
+}
+
+/* ----------------------------------------------------------
+   6. Buttons – electric blue, rounded
+   ---------------------------------------------------------- */
+
+/* Primary action buttons - blue background */
+button#searchFormSubmitBtn,
+button#orbSubmitBtn,
+button[type="submit"],
+._0_k_btn,
+.k_ui_button,
+._0_k_ui_button {
+  background-color: var(--capy-accent) !important;
+  color: var(--capy-text) !important;
+  border-radius: 999px !important;
+  border: 1px solid var(--capy-accent) !important;
+  font-weight: var(--capy-font-weight-semibold) !important;
+}
+
+button#searchFormSubmitBtn,
+button#orbSubmitBtn {
+  padding: 0 18px !important;
+  min-height: 34px !important;
+}
+
+/* Utility buttons - transparent background with border */
+button:not(#searchFormSubmitBtn):not(#orbSubmitBtn):not([type="submit"]):not(._0_k_btn):not(.k_ui_button):not(._0_k_ui_button),
+button.icon-button,
+button[aria-label*="Clear"],
+button[aria-label*="Menu"],
+button[aria-label*="More"],
+button[aria-label*="close"],
+button[aria-label*="Close"],
+.clear-button,
+._0_clear_button,
+._0_dropdown_btn,
+.dropdown-button,
+button[class*="dropdown"],
+button[class*="filter"] {
+  background-color: transparent !important;
+  color: var(--capy-text-dim) !important;
+  border: 1px solid var(--capy-border) !important;
+  border-radius: 8px !important;
+}
+
+button:not(#searchFormSubmitBtn):not(#orbSubmitBtn):not([type="submit"]):not(._0_k_btn):not(.k_ui_button):not(._0_k_ui_button):hover,
+button.icon-button:hover,
+button[aria-label*="Clear"]:hover,
+button[aria-label*="Menu"]:hover,
+button[aria-label*="More"]:hover,
+button[aria-label*="close"]:hover,
+button[aria-label*="Close"]:hover,
+._0_dropdown_btn:hover,
+.dropdown-button:hover,
+button[class*="dropdown"]:hover,
+button[class*="filter"]:hover {
+  background-color: var(--capy-surface) !important;
+  color: var(--capy-text) !important;
+  border-color: var(--capy-accent) !important;
+}
+
+button[role="tab"],
+[role="tablist"] > button {
+  border-radius: 999px !important;
+}
+
+button:hover,
+._0_k_btn:hover,
+.k_ui_button:hover,
+._0_k_ui_button:hover {
+  background-color: var(--capy-accent-strong) !important;
+}
+
+button:focus,
+._0_k_btn:focus,
+.k_ui_button:focus,
+._0_k_ui_button:focus {
+  box-shadow: 0 0 0 2px rgba(30, 128, 199, 0.6) !important;
+}
+
+/* ----------------------------------------------------------
+   7. Sidebar / widgets
+   ---------------------------------------------------------- */
+
+._0_right-box,
+._0_right-box .card__face,
+._0_right-box ._0_provider-content {
+  background-color: var(--capy-surface-soft) !important;
+}
+
+.footer.footer-landing {
+  background: transparent !important;
+  color: var(--capy-text-dim) !important;
+  border-top: 1px solid var(--capy-border) !important;
+}
+
+._0_lenses,
+.top-content._0_provider-content,
+.instant-tab-separator {
+  display: none !important;
+}
+
+/* ----------------------------------------------------------
+   8. Assistant theming
+   ---------------------------------------------------------- */
+
+/* Assistant pages - transparent backgrounds to show gradient */
+.assistant,
+.assistant-app,
+.assistant-root,
+main[data-page="assistant"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: var(--capy-text) !important;
+}
+
+/* Text areas for Assistant */
+textarea,
+textarea[placeholder*="Assistant"],
+textarea[placeholder*="Ask"],
+textarea[placeholder*="ask"],
+.assistant-input,
+.assistant-textarea {
+  background-color: var(--capy-surface) !important;
+  border-radius: var(--capy-radius-big) !important;
+  border: 1px solid var(--capy-border) !important;
+  color: var(--capy-text) !important;
+}
+
+/* Action buttons for Assistant */
+button[aria-label*="Send"],
+button[aria-label*="send"],
+button[aria-label*="Voice"],
+button[aria-label*="Mic"],
+button[aria-label*="Mode"],
+button[aria-label*="Ask"],
+.assistant button {
+  background-color: var(--capy-accent) !important;
+  border-radius: 999px !important;
+  border: 1px solid var(--capy-accent) !important;
+}
+
+/* Assistant output/response areas */
+.assistant-response,
+[class*="response"] {
+  background-color: var(--capy-surface) !important;
+  border-radius: var(--capy-radius) !important;
+  border: 1px solid var(--capy-border) !important;
+  color: var(--capy-text) !important;
+}
+
+/* ----------------------------------------------------------
+   9. Scrollbars
+   ---------------------------------------------------------- */
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--capy-bg);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--capy-surface);
+  border-radius: 999px;
+  border: 2px solid var(--capy-bg);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--capy-accent);
+}
+
+/* ----------------------------------------------------------
+   10. Search options tabs - all states and selectors
+   ---------------------------------------------------------- */
+
+/* Target search filter/option buttons (NOT nav tabs) */
+._0_search-options button,
+._0_search_options button,
+.search-options button,
+[class*="search-options"] button:not(.nav_item):not(._0_item),
+[class*="search_options"] button:not(.nav_item):not(._0_item) {
+  color: var(--capy-text-dim) !important;
+  border-bottom: 2px solid transparent !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  border-radius: 0 !important;
+  padding: 8px 16px !important;
+}
+
+/* Active state - electric blue */
+._0_item.--active,
+.nav_item.--active,
+._0_item[aria-current="page"],
+._0_item[class*="active"],
+a.--active,
+a[aria-current="page"],
+._0_search-options button[aria-pressed="true"],
+._0_search_options button[aria-pressed="true"],
+._0_search-options button[aria-current="page"],
+._0_search_options button[aria-current="page"],
+.search-options button[aria-pressed="true"],
+button[aria-pressed="true"],
+button[aria-current="page"],
+._0_item.n_se.--active,
+._0_item.n_im.--active,
+._0_item.n_vi.--active,
+._0_item.n_ne.--active,
+._0_item.n_ma.--active,
+._0_item.n_po.--active {
+  color: var(--capy-accent) !important;
+  border-bottom-color: var(--capy-accent) !important;
+  border-bottom: 2px solid var(--capy-accent) !important;
+  background: transparent !important;
+  font-weight: var(--capy-font-weight-semibold) !important;
+}
+
+/* Hover state */
+._0_item:hover,
+.nav_item:hover,
+._0_search-options button:hover,
+._0_search_options button:hover,
+.search-options button:hover,
+a[href*="/search"]:hover,
+a[href*="/images"]:hover,
+a[href*="/video"]:hover,
+a[href*="/news"]:hover,
+a[href*="/maps"]:hover,
+a[href*="/podcasts"]:hover {
+  color: var(--capy-accent-strong) !important;
+  border-bottom-color: var(--capy-accent) !important;
+}
+
+/* Override inline yellow/red styles */
+*[style*="border-bottom-color: #ffc400"],
+*[style*="border-bottom-color:#ffc400"],
+*[style*="border-bottom-color: rgb(255, 196, 0)"],
+*[style*="border-bottom: 2px solid #ffc400"],
+*[style*="border-bottom:2px solid #ffc400"],
+*[style*="border-bottom: 2px solid rgb(255, 196, 0)"],
+*[style*="border-bottom-color: #ff0000"],
+*[style*="border-bottom-color: red"],
+*[style*="color: #ffc400"],
+*[style*="color:#ffc400"],
+*[style*="color: rgb(255, 196, 0)"],
+._0_item[style],
+a[style*="border"],
+button[style*="border"] {
+  border-bottom-color: var(--capy-accent) !important;
+  color: var(--capy-accent) !important;
+}
+
+/* Extra specificity for stubborn elements */
+._0_search-options > *,
+._0_search_options > * {
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
+}
+
+._0_search-options > *.--active,
+._0_search_options > *.--active,
+._0_search-options > *[aria-pressed="true"],
+._0_search_options > *[aria-current="page"] {
+  border-bottom-color: var(--capy-accent) !important;
+  color: var(--capy-accent) !important;
+}
+
+/* Target the actual nav container */
+.serp-nav,
+._0_serp-nav,
+nav[class*="search"] {
+  background: transparent !important;
+}
+
+.serp-nav a,
+._0_serp-nav a,
+nav[class*="search"] a {
+  color: var(--capy-text-dim) !important;
+}
+
+.serp-nav a.--active,
+._0_serp-nav a.--active,
+nav[class*="search"] a.--active,
+.serp-nav a[aria-current],
+._0_serp-nav a[aria-current] {
+  color: var(--capy-accent) !important;
+  border-bottom: 2px solid var(--capy-accent) !important;
+}
+
+/* ----------------------------------------------------------
+   11. Mobile tweaks
+   ---------------------------------------------------------- */
+
+@media (max-width: 800px) {
+  ._0_SRI.search-result {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+
+  .app-nav {
+    border-radius: 0 !important;
+  }
+  
+  /* Capy logo on mobile - positioned to not overlap text */
+  .search-input-container::after,
+  .search-input-container._0_search-input-container._0_no_multiline::after {
+    width: 26px !important;
+    height: 26px !important;
+    right: 58px !important;
+    z-index: 10 !important;
+  }
+  
+  /* Ensure search container has room for icons */
+  .search-input-container,
+  .search-input-container._0_search-input-container._0_no_multiline {
+    padding-right: 110px !important;
+  }
+  
+  /* Ensure search input has padding on mobile */
+  input#searchBar,
+  input[type="search"],
+  input.search-input {
+    padding-right: 110px !important;
+  }
+  
+  /* Fix search button to stay inside and aligned */
+  button#searchFormSubmitBtn,
+  button[type="submit"] {
+    position: absolute !important;
+    right: 8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    padding: 6px !important;
+    min-height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Clear button positioning on mobile */
+  button[aria-label*="Clear"],
+  .clear-button {
+    position: absolute !important;
+    right: auto !important;
+    left: auto !important;
+  }
+  
+  /* Prevent icons from becoming huge - but not logos */
+  ._0_SRI svg:not([class*="logo"]),
+  ._0_SRI img[src*="icon"],
+  ._0_SRI img[src*="shield"],
+  button:not([class*="logo"]) svg,
+  button img[src*="icon"],
+  .search-input-container svg:not([class*="logo"]),
+  .search-input-container img[src*="icon"] {
+    max-width: 24px !important;
+    max-height: 24px !important;
+  }
+  
+  /* Keep logos full size on mobile */
+  header img,
+  header svg,
+  nav > img,
+  nav > svg,
+  [class*="logo"],
+  .kagi-logo,
+  a > img,
+  a > svg {
+    max-width: none !important;
+    max-height: none !important;
+  }
+  
+  /* Mobile tabs - NO background pill */
+  a._0_item,
+  a.nav_item,
+  ._0_item,
+  .nav_item {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    padding: 8px 12px !important;
+    border: none !important;
+    border-bottom: none !important;
+    position: relative !important;
+  }
+  
+  /* Mobile utility buttons stay as transparent */
+  button:not(#searchFormSubmitBtn):not(#orbSubmitBtn):not([type="submit"]),
+  button.icon-button,
+  button[aria-label*="Clear"],
+  button[aria-label*="Menu"] {
+    background: transparent !important;
+    border: 1px solid var(--capy-border) !important;
+    padding: 6px !important;
+  }
+  
+  /* Active tabs/buttons - thin centered underline using ::after */
+  a._0_item.--active::after,
+  a.nav_item.--active::after,
+  ._0_item.--active::after,
+  .nav_item.--active::after,
+  a.--active::after,
+  a[aria-current="page"]::after,
+  button[aria-pressed="true"]::after,
+  button._0_k_btn[aria-pressed="true"]::after,
+  button.k_ui_button[aria-pressed="true"]::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 60% !important;
+    height: 2px !important;
+    background-color: var(--capy-accent) !important;
+  }
+  
+  /* Make sure active tab/button text is visible */
+  a._0_item.--active,
+  a.nav_item.--active,
+  ._0_item.--active,
+  .nav_item.--active,
+  a.--active,
+  a[aria-current="page"],
+  button[aria-pressed="true"],
+  button._0_k_btn[aria-pressed="true"],
+  button.k_ui_button[aria-pressed="true"] {
+    color: var(--capy-text) !important;
+  }
+  
+  a._0_item.--active *,
+  a.nav_item.--active *,
+  ._0_item.--active *,
+  .nav_item.--active *,
+  a.--active *,
+  a[aria-current="page"] *,
+  button[aria-pressed="true"] *,
+  button._0_k_btn *,
+  button.k_ui_button *,
+  button * {
+    color: var(--capy-text) !important;
+  }
+  
+  /* Mobile search options - force all text to show */
+  ._0_item,
+  .nav_item,
+  ._0_search-options button,
+  ._0_search_options button,
+  ._0_search-options a,
+  ._0_search_options > *,
+  a[href*="/search"],
+  a[href*="/images"],
+  a[href*="/video"],
+  a[href*="/news"],
+  [class*="search-option"],
+  [class*="nav"] a,
+  [class*="nav"] button {
+    min-width: 70px !important;
+    max-width: none !important;
+    width: auto !important;
+    padding: 10px 16px !important;
+    font-size: 15px !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    display: inline-block !important;
+  }
+  
+  /* Make sure text isn't hidden */
+  ._0_item *,
+  .nav_item *,
+  ._0_search-options * {
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Active tab on mobile */
+  ._0_item.--active,
+  .nav_item.--active,
+  a.--active,
+  [aria-current="page"] {
+    background: var(--capy-accent) !important;
+    color: #ffffff !important;
+    border-radius: 20px !important;
+    border-bottom: 2px solid var(--capy-accent) !important;
+  }
+}
