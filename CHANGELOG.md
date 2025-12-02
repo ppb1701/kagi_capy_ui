@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.0.2] - 2025-12-01
+
+### Fixed
+- **Ultrawide screen support** - Removed max-width constraints on result containers to properly fill ultrawide displays
+- **Video thumbnail aspect ratios** - Preserved 16:9 aspect ratio for video thumbnails while excluding YouTube and channel logos
+- **Search bar centering** - Added flexbox centering to search form wrapper for proper alignment on home page
+
+### Changed
+- Result containers now expand to full width on ultrawide screens
+- Video thumbnails maintain proper 16:9 aspect ratio
+- YouTube logos, channel icons, and source images excluded from aspect ratio constraints
+- Search bar properly centered on home page
+
+### Technical Details
+- Added `max-width: none !important` and `width: 100% !important` to result containers
+- Implemented aspect-ratio preservation for video thumbnails with logo exclusions
+- Added flexbox centering to `.search-form-wrapper`, `.search_form_box`, and `.center-content-box`
+
+## [1.0.1] - 2025-12-01
+
+
 ## [1.0.0] - 2025-12-01
 
 ### Fixed

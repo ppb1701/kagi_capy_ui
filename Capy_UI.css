@@ -1,5 +1,5 @@
 /************************************************************
- * Kagi Capy UI (1.0.0) 2025-12-1
+ * Kagi Capy UI (1.0.1) 2025-12-1
  * - Tricorn Black bg (#1c1d21)
  * - Onyx surfaces (#36383f)  
  * - Electric blue accent (#1e80c7)
@@ -90,6 +90,8 @@ div[class*="container"],
   background-color: transparent !important;
   background-image: none !important;
   color: var(--capy-text) !important;
+  max-width: none !important;
+  width: 100% !important;
 }
 
 /* Force gradient background on all pages */
@@ -120,6 +122,47 @@ p, span, li, div {
 /* ----------------------------------------------------------
    2. Cards / surfaces (results, widgets, etc.)
    ---------------------------------------------------------- */
+
+/* Remove width constraints on result containers for ultrawide screens */
+._0_results_main,
+._0_left-box,
+.search-results-container,
+[class*="results-container"],
+[class*="serp-main"],
+div[class*="search-content"] {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Keep YouTube and channel logos/icons at their natural size first */
+img[alt*="YouTube"],
+img[alt*="youtube"],
+img[src*="youtube"],
+img[src*="yt"],
+img[alt*="logo"],
+img[alt*="Logo"],
+[class*="channel"] img,
+[class*="source"] img,
+[class*="author"] img,
+[class*="uploader"] img {
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  aspect-ratio: auto !important;
+}
+
+/* Preserve video thumbnail aspect ratios - exclude logos */
+[class*="video"] img:not([alt*="YouTube"]):not([alt*="youtube"]):not([src*="youtube"]):not([alt*="logo"]):not([alt*="Logo"]),
+[class*="video"] video,
+[class*="video-preview"]:not([alt*="YouTube"]):not([alt*="youtube"]):not([src*="youtube"]):not([alt*="logo"]),
+[class*="thumbnail"]:not([alt*="YouTube"]):not([alt*="youtube"]):not([src*="youtube"]):not([alt*="logo"]),
+._0_video img:not([alt*="YouTube"]):not([alt*="youtube"]):not([src*="youtube"]):not([alt*="logo"]),
+._0_video video {
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+}
 
 .card__face,
 ._0_SRI.search-result,
@@ -250,6 +293,15 @@ button[aria-current="page"] {
 /* ----------------------------------------------------------
    5. Search bar styling
    ---------------------------------------------------------- */
+
+/* Center search form on home page */
+.search-form-wrapper,
+.search_form_box,
+.center-content-box {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
 
 /* Container styling */
 div.search-form-wrapper > div.search_form_box > #searchForm >
