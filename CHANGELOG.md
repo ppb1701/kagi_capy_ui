@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.2] - 2025-12-01
+## [1.0.1] - 2025-12-01
 
 ### Fixed
 - **Ultrawide screen support** - Removed max-width constraints on result containers to properly fill ultrawide displays
@@ -17,8 +17,6 @@
 - Added `max-width: none !important` and `width: 100% !important` to result containers
 - Implemented aspect-ratio preservation for video thumbnails with logo exclusions
 - Added flexbox centering to `.search-form-wrapper`, `.search_form_box`, and `.center-content-box`
-
-## [1.0.1] - 2025-12-01
 
 
 ## [1.0.0] - 2025-12-01
