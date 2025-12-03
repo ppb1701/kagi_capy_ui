@@ -1,5 +1,5 @@
 /************************************************************
- * Kagi Capy UI (1.0.1) 2025-12-1
+ * Kagi Capy UI (1.0.2) 2025-12-2
  * - Tricorn Black bg (#1c1d21)
  * - Onyx surfaces (#36383f)  
  * - Electric blue accent (#1e80c7)
@@ -294,10 +294,10 @@ button[aria-current="page"] {
    5. Search bar styling
    ---------------------------------------------------------- */
 
-/* Center search form on home page */
-.search-form-wrapper,
-.search_form_box,
-.center-content-box {
+/* Center search form on home page only - not on assistant or other pages */
+body:not([class*="assistant"]) .search-form-wrapper,
+body:not([class*="assistant"]) .search_form_box,
+body:not([class*="assistant"]) .center-content-box {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;

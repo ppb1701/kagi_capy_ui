@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.2] - 2025-12-02
+
+### Fixed
+- **Assistant page layout** - Fixed chat alignment being pushed to the right by making search bar centering specific to non-assistant pages only
+
+### Technical Details
+- Modified flexbox centering selectors to exclude assistant pages using `body:not([class*="assistant"])` selector
+- Assistant chat now properly aligns to the left side as intended
+
 ## [1.0.1] - 2025-12-01
 
 ### Fixed
