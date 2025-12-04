@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.3] - 2025-12-04
+
+### Fixed
+- **Assistant send button on mobile** - Fixed send button being pushed off screen and made it stay inside the text input box where it belongs
+- **Button positioning conflicts** - Prevented search page button positioning from affecting assistant page buttons
+
+### Technical Details
+- Removed generic `button[type="submit"]` positioning that was breaking assistant layout
+- Made button positioning specific to `button#searchFormSubmitBtn` only
+- Added overflow prevention for assistant containers on mobile
+- Assistant send button now maintains its default position inside the input field
+
 ## [1.0.2] - 2025-12-02
 
 ### Fixed
