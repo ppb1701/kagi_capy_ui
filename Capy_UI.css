@@ -295,12 +295,23 @@ button[aria-current="page"] {
    ---------------------------------------------------------- */
 
 /* Center search form on home page only - not on assistant or other pages */
-body:not([class*="assistant"]) .search-form-wrapper,
-body:not([class*="assistant"]) .search_form_box,
-body:not([class*="assistant"]) .center-content-box {
+body:not([class*="assistant"]):not([data-page*="assistant"]) .search-form-wrapper,
+body:not([class*="assistant"]):not([data-page*="assistant"]) .search_form_box,
+body:not([class*="assistant"]):not([data-page*="assistant"]) .center-content-box {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+}
+
+/* Prevent centering on assistant pages - keep left aligned */
+[class*="assistant"] .search-form-wrapper,
+[class*="assistant"] .search_form_box,
+[class*="assistant"] .center-content-box,
+[data-page*="assistant"] .search-form-wrapper,
+[data-page*="assistant"] .search_form_box,
+[data-page*="assistant"] .center-content-box {
+  display: block !important;
+  justify-content: flex-start !important;
 }
 
 /* Container styling */
