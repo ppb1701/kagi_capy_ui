@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.0.6] - 2025-12-05
+
+### Fixed
+- **Kagi CSS class name changes** - Updated all selectors to work with Kagi's new class structure (removed dot prefix from `_0_` classes)
+- **Assistant page isolation** - Completely removed theme styling from assistant pages to prevent interference
+- **Search page targeting** - Implemented `:has()` selectors to only apply theming to search pages
+- **Mobile search results** - Fixed unthemed search results on mobile by adding fallback selectors (`body:has(#searchForm)`, `body:has(._0_SRI.search-result)`)
+- **Search input text truncation** - Reduced padding from 125px to 90px on desktop and 110px to 75px on mobile to prevent text cutoff
+- **Placeholder text cutoff** - Moved capy logo from 100px to 52px on desktop to accommodate search text
+
+### Changed
+- Theme now uses multiple `:has()` selectors to reliably target search pages
+- Desktop search input padding: 125px → 90px
+- Mobile search input padding: 110px → 75px  
+- Capy logo position: 100px → 52px (desktop), stays at 92px (mobile)
+- All assistant-specific styling removed to avoid conflicts
+- Navigation and tab styling scoped to search pages only
+
+### Technical Details
+- Updated selectors from `._0_` to `_0_` pattern for new Kagi class structure
+- Added `a._0_query_link_item` for navigation links
+- Removed all `body:not([class*="assistant"])` selectors in favor of positive `:has()` targeting
+- Added multiple fallback `:has()` selectors: `.search-form-wrapper`, `#searchForm`, `._0_SRI.search-result`
+- Fixed mobile button positioning with proper `body:has()` scoping
+
 ## [1.0.5] - 2025-12-05
 
 ### Fixed

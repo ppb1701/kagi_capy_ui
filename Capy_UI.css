@@ -1,5 +1,5 @@
 /************************************************************
- * Kagi Capy UI (1.0.4) 2025-12-5
+ * Kagi Capy UI (1.0.6) 2025-12-5
  * - Tricorn Black bg (#1c1d21)
  * - Onyx surfaces (#36383f)  
  * - Electric blue accent (#1e80c7)
@@ -54,8 +54,11 @@
    1. Global page reset (dark + gradient)
    ---------------------------------------------------------- */
 
-html,
-body {
+/* Only apply to search pages with main search content */
+body:has(#main.center-content-box._0_content-area.results-box),
+body:has(.search-form-wrapper),
+body:has(#searchForm),
+body:has(._0_SRI.search-result) {
   background-color: var(--capy-bg) !important;
   background-image:
     radial-gradient(circle at top,
@@ -65,6 +68,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif !important;
   font-size: var(--capy-font-size) !important;
+  background-attachment: fixed !important;
 }
 
 #layout-v2,
@@ -75,6 +79,8 @@ body {
 main,
 .content,
 .app-box-center,
+.app-content,
+.app-content-box,
 .center-content-box,
 .search-results,
 .serp-container,
@@ -94,8 +100,11 @@ div[class*="container"],
   width: 100% !important;
 }
 
-/* Force gradient background on all pages */
-body::before {
+/* Force gradient background only on search pages */
+body:has(#main.center-content-box._0_content-area.results-box)::before,
+body:has(.search-form-wrapper)::before,
+body:has(#searchForm)::before,
+body:has(._0_SRI.search-result)::before {
   content: "" !important;
   position: fixed !important;
   top: 0 !important;
@@ -110,12 +119,10 @@ body::before {
   pointer-events: none !important;
 }
 
-/* Ensure body itself also has the gradient as fallback */
-body {
-  background-attachment: fixed !important;
-}
-
-p, span, li, div {
+body:has(.search-form-wrapper) p, 
+body:has(.search-form-wrapper) span, 
+body:has(.search-form-wrapper) li, 
+body:has(.search-form-wrapper) div {
   color: inherit;
 }
 
@@ -125,11 +132,15 @@ p, span, li, div {
 
 /* Remove width constraints on result containers for ultrawide screens */
 ._0_results_main,
+._0_main-search-results,
+._0_content-area,
 ._0_left-box,
 .search-results-container,
 [class*="results-container"],
 [class*="serp-main"],
-div[class*="search-content"] {
+div[class*="search-content"],
+.center-content-box,
+._0_content-bay {
   max-width: none !important;
   width: 100% !important;
 }
@@ -164,15 +175,17 @@ img[alt*="Logo"],
   aspect-ratio: 16 / 9 !important;
 }
 
-.card__face,
-._0_SRI.search-result,
-._0_provider-content.inline-content.clearfix,
-.wikipediaResult,
-.newsResultBody,
-._0_right-box,
-.section,
-.panel,
-.k-card {
+body:has(.search-form-wrapper) .card__face,
+body:has(.search-form-wrapper) ._0_SRI.search-result,
+body:has(.search-form-wrapper) ._0_provider-content,
+body:has(.search-form-wrapper) ._0_provider-content.inline-content.clearfix,
+body:has(.search-form-wrapper) .wikipediaResult,
+body:has(.search-form-wrapper) .newsResultBody,
+body:has(.search-form-wrapper) ._0_right-box,
+body:has(.search-form-wrapper) .section,
+body:has(.search-form-wrapper) .panel,
+body:has(.search-form-wrapper) .k-card,
+body:has(.search-form-wrapper) ._0_quick_answer_box {
   background-color: var(--capy-surface) !important;
   background-image: none !important;
   border-radius: var(--capy-radius) !important;
@@ -180,16 +193,16 @@ img[alt*="Logo"],
   box-shadow: 0 0 32px rgba(0, 0, 0, 0.7) !important;
 }
 
-._0_SRI.search-result {
+body:has(.search-form-wrapper) ._0_SRI.search-result {
   margin-bottom: var(--capy-gap) !important;
   padding: 12px 16px !important;
 }
 
-._0_DESC,
-.newsResultBody,
-._0_URL_VISIBLE,
-._0_result-snippet,
-.card__face ._0_snippet {
+body:has(.search-form-wrapper) ._0_DESC,
+body:has(.search-form-wrapper) .newsResultBody,
+body:has(.search-form-wrapper) ._0_URL_VISIBLE,
+body:has(.search-form-wrapper) ._0_result-snippet,
+body:has(.search-form-wrapper) .card__face ._0_snippet {
   color: var(--capy-text-dim) !important;
 }
 
@@ -197,17 +210,17 @@ img[alt*="Logo"],
    3. Links, titles, quotes
    ---------------------------------------------------------- */
 
-a,
-.__sri_title_link,
-.newsResultTitle a,
-.card__face a {
+body:has(.search-form-wrapper) a,
+body:has(.search-form-wrapper) .__sri_title_link,
+body:has(.search-form-wrapper) .newsResultTitle a,
+body:has(.search-form-wrapper) .card__face a {
   color: var(--capy-accent) !important;
   text-decoration: none !important;
 }
 
-a:hover,
-.__sri_title_link:hover,
-.newsResultTitle a:hover {
+body:has(.search-form-wrapper) a:hover,
+body:has(.search-form-wrapper) .__sri_title_link:hover,
+body:has(.search-form-wrapper) .newsResultTitle a:hover {
   color: var(--capy-accent-strong) !important;
   text-decoration: underline !important;
 }
@@ -231,7 +244,11 @@ blockquote::before {
    4. Top nav (Web / Images / etc tabs)
    ---------------------------------------------------------- */
 
-.app-nav {
+body:has(.search-form-wrapper) .app-nav,
+body:has(.search-form-wrapper) nav#tonav,
+body:has(.search-form-wrapper) nav.app-nav,
+body:has(.search-form-wrapper) ._0_nav-items,
+body:has(.search-form-wrapper) .serp-nav {
   background-color: transparent !important;
   border-bottom: 1px solid var(--capy-border) !important;
   box-shadow: none !important;
@@ -245,11 +262,12 @@ blockquote::before {
 }
 
 /* Style all nav items consistently */
-a.nav_item,
-._0_item,
-.nav_item,
-.app-nav a,
-.app-nav button {
+body:has(.search-form-wrapper) a.nav_item,
+body:has(.search-form-wrapper) a._0_query_link_item,
+body:has(.search-form-wrapper) ._0_item,
+body:has(.search-form-wrapper) .nav_item,
+body:has(.search-form-wrapper) .app-nav a,
+body:has(.search-form-wrapper) .app-nav button {
   font-size: var(--capy-font-size-small) !important;
   color: var(--capy-text-dim) !important;
   background: transparent !important;
@@ -263,23 +281,26 @@ a.nav_item,
   text-decoration: none !important;
 }
 
-a.nav_item:hover,
-._0_item:hover,
-.nav_item:hover,
-.app-nav a:hover,
-.app-nav button:hover {
+body:has(.search-form-wrapper) a.nav_item:hover,
+body:has(.search-form-wrapper) a._0_query_link_item:hover,
+body:has(.search-form-wrapper) ._0_item:hover,
+body:has(.search-form-wrapper) .nav_item:hover,
+body:has(.search-form-wrapper) .app-nav a:hover,
+body:has(.search-form-wrapper) .app-nav button:hover {
   background: transparent !important;
   color: var(--capy-text) !important;
   border-bottom-color: var(--capy-text-dim) !important;
 }
 
-a.nav_item.--active,
-._0_item.--active,
-.nav_item.--active,
-.app-nav a.--active,
-.app-nav button.--active,
-a[aria-current="page"],
-button[aria-current="page"] {
+body:has(.search-form-wrapper) a.nav_item.--active,
+body:has(.search-form-wrapper) a._0_query_link_item.--active,
+body:has(.search-form-wrapper) a._0_query_link_item[aria-hidden="true"],
+body:has(.search-form-wrapper) ._0_item.--active,
+body:has(.search-form-wrapper) .nav_item.--active,
+body:has(.search-form-wrapper) .app-nav a.--active,
+body:has(.search-form-wrapper) .app-nav button.--active,
+body:has(.search-form-wrapper) a[aria-current="page"],
+body:has(.search-form-wrapper) button[aria-current="page"] {
   background: transparent !important;
   color: var(--capy-accent) !important;
   border-bottom: 2px solid var(--capy-accent) !important;
@@ -294,31 +315,20 @@ button[aria-current="page"] {
    5. Search bar styling
    ---------------------------------------------------------- */
 
-/* Center search form on home page only - not on assistant or other pages */
-body:not([class*="assistant"]):not([data-page*="assistant"]) .search-form-wrapper,
-body:not([class*="assistant"]):not([data-page*="assistant"]) .search_form_box,
-body:not([class*="assistant"]):not([data-page*="assistant"]) .center-content-box {
+/* Center search form on home page only */
+body:has(.search-form-wrapper) .search-form-wrapper,
+body:has(.search-form-wrapper) .search_form_box,
+body:has(.search-form-wrapper) .center-content-box {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
 }
 
-/* Prevent centering on assistant pages - keep left aligned */
-[class*="assistant"] .search-form-wrapper,
-[class*="assistant"] .search_form_box,
-[class*="assistant"] .center-content-box,
-[data-page*="assistant"] .search-form-wrapper,
-[data-page*="assistant"] .search_form_box,
-[data-page*="assistant"] .center-content-box {
-  display: block !important;
-  justify-content: flex-start !important;
-}
-
 /* Container styling */
-div.search-form-wrapper > div.search_form_box > #searchForm >
-  .search-input-container._0_search-input-container._0_no_multiline,
-div.center-content-box > div.search_form_box > #searchForm >
-  .search-input-container._0_search-input-container._0_no_multiline,
+div.search-form-wrapper > div.search_form_box > #searchForm > .search-input-container,
+div.center-content-box > div.search_form_box > #searchForm > .search-input-container,
+.search-input-container._0_search-input-container,
+.search-input-container._0_search-input-container._0_no_multiline,
 .search-input-container {
   background-color: var(--capy-surface) !important;
   background-image: none !important;
@@ -337,11 +347,10 @@ input.search-input {
 }
 
 /* Capy logo positioned beside the search field */
-.search-input-container::after,
-.search-input-container._0_search-input-container._0_no_multiline::after {
+.search-input-container::after {
   content: "" !important;
   position: absolute !important;
-  right: 100px !important;
+  right: 52px !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
   width: 28px !important;
@@ -356,16 +365,17 @@ input.search-input {
 
 /* Make sure containers have position relative and proper padding */
 .search-input-container,
+.search-input-container._0_search-input-container,
 .search-input-container._0_search-input-container._0_no_multiline {
   position: relative !important;
-  padding-right: 125px !important;
+  padding-right: 90px !important;
 }
 
 /* Ensure search input has padding to prevent text overlap with icons */
 input#searchBar,
 input[type="search"],
 input.search-input {
-  padding-right: 125px !important;
+  padding-right: 90px !important;
 }
 
 /* Generic inputs */
@@ -410,8 +420,7 @@ nav > svg {
   box-shadow: none !important;
 }
 
-.search-input-container:focus-within,
-.search-input-container._0_search-input-container._0_no_multiline:focus-within {
+.search-input-container:focus-within {
   border-color: var(--capy-accent) !important;
   box-shadow: 0 0 0 2px rgba(30, 128, 199, 0.6) !important;
 }
@@ -435,6 +444,7 @@ button[type="submit"],
 }
 
 button#searchFormSubmitBtn,
+button#searchFormSubmit,
 button#orbSubmitBtn {
   padding: 0 18px !important;
   min-height: 34px !important;
@@ -449,11 +459,13 @@ button[aria-label*="More"],
 button[aria-label*="close"],
 button[aria-label*="Close"],
 .clear-button,
+.clear-search,
 ._0_clear_button,
 ._0_dropdown_btn,
 .dropdown-button,
 button[class*="dropdown"],
-button[class*="filter"] {
+button[class*="filter"],
+button.btn {
   background-color: transparent !important;
   color: var(--capy-text-dim) !important;
   border: 1px solid var(--capy-border) !important;
@@ -521,29 +533,9 @@ button:focus,
    8. Assistant theming
    ---------------------------------------------------------- */
 
-/* Assistant pages - transparent backgrounds to show gradient */
-.assistant,
-.assistant-app,
-.assistant-root,
-main[data-page="assistant"] {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  color: var(--capy-text) !important;
-}
+/* Removed - was affecting assistant */
 
-/* Text areas for Assistant */
-textarea,
-textarea[placeholder*="Assistant"],
-textarea[placeholder*="Ask"],
-textarea[placeholder*="ask"],
-.assistant-input,
-.assistant-textarea {
-  background-color: var(--capy-surface) !important;
-  border-radius: var(--capy-radius-big) !important;
-  border: 1px solid var(--capy-border) !important;
-  color: var(--capy-text) !important;
-}
+/* Removed - was affecting assistant */
 
 /* Fix assistant input container width on mobile so buttons stay on screen */
 @media (max-width: 800px) {
@@ -573,18 +565,7 @@ textarea[placeholder*="ask"],
   }
 }
 
-/* Action buttons for Assistant */
-button[aria-label*="Send"],
-button[aria-label*="send"],
-button[aria-label*="Voice"],
-button[aria-label*="Mic"],
-button[aria-label*="Mode"],
-button[aria-label*="Ask"],
-.assistant button {
-  background-color: var(--capy-accent) !important;
-  border-radius: 999px !important;
-  border: 1px solid var(--capy-accent) !important;
-}
+/* Removed - was affecting assistant buttons */
 
 /* Make assistant send button easier to reach on mobile */
 @media (max-width: 800px) {
@@ -597,14 +578,7 @@ button[aria-label*="Ask"],
   }
 }
 
-/* Assistant output/response areas */
-.assistant-response,
-[class*="response"] {
-  background-color: var(--capy-surface) !important;
-  border-radius: var(--capy-radius) !important;
-  border: 1px solid var(--capy-border) !important;
-  color: var(--capy-text) !important;
-}
+/* Removed - was affecting assistant */
 
 /* ----------------------------------------------------------
    9. Scrollbars
@@ -666,7 +640,11 @@ button[aria-current="page"],
 ._0_item.n_vi.--active,
 ._0_item.n_ne.--active,
 ._0_item.n_ma.--active,
-._0_item.n_po.--active {
+._0_item.n_po.--active,
+a._0_query_link_item.n_se,
+a._0_query_link_item.n_im,
+a._0_query_link_item.n_vi,
+a._0_query_link_item.n_ne {
   color: var(--capy-accent) !important;
   border-bottom-color: var(--capy-accent) !important;
   border-bottom: 2px solid var(--capy-accent) !important;
@@ -751,20 +729,19 @@ nav[class*="search"] a.--active,
    ---------------------------------------------------------- */
 
 @media (max-width: 800px) {
-  ._0_SRI.search-result {
+  body:has(.search-form-wrapper) ._0_SRI.search-result {
     border-radius: 0 !important;
     box-shadow: none !important;
     border-left: none !important;
     border-right: none !important;
   }
 
-  .app-nav {
+  body:has(.search-form-wrapper) .app-nav {
     border-radius: 0 !important;
   }
   
   /* Capy logo on mobile - move further left to make room */
-  .search-input-container::after,
-  .search-input-container._0_search-input-container._0_no_multiline::after {
+  .search-input-container::after {
     width: 24px !important;
     height: 24px !important;
     right: 92px !important;
@@ -772,20 +749,20 @@ nav[class*="search"] a.--active,
   }
   
   /* Ensure search container has room for all icons */
-  .search-input-container,
-  .search-input-container._0_search-input-container._0_no_multiline {
-    padding-right: 130px !important;
+  .search-input-container {
+    padding-right: 75px !important;
   }
   
   /* Ensure search input has padding on mobile */
   input#searchBar,
   input[type="search"],
   input.search-input {
-    padding-right: 130px !important;
+    padding-right: 75px !important;
   }
   
   /* Fix search button to stay inside and aligned - ONLY for search, not assistant */
-  button#searchFormSubmitBtn {
+  button#searchFormSubmitBtn,
+  button#searchFormSubmit {
     position: absolute !important;
     right: 8px !important;
     top: 50% !important;
