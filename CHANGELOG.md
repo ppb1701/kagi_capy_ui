@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.5] - 2025-12-05
+
+### Fixed
+- **Assistant page alignment on desktop** - Fixed text box being pushed to the right and text getting cut off
+- **Flexbox centering conflicts** - Prevented search bar centering from affecting assistant page layout
+
+### Technical Details
+- Added `[data-page*="assistant"]` selector to exclusion list for centering
+- Explicitly set assistant containers to `display: block` and `justify-content: flex-start`
+- Assistant page now maintains proper left alignment without text cutoff
+
 ## [1.0.4] - 2025-12-05
 
 ### Fixed
