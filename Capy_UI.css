@@ -751,26 +751,26 @@ nav[class*="search"] a.--active,
     border-radius: 0 !important;
   }
   
-  /* Capy logo on mobile - positioned to not overlap text */
+  /* Capy logo on mobile - move further left to make room */
   .search-input-container::after,
   .search-input-container._0_search-input-container._0_no_multiline::after {
-    width: 26px !important;
-    height: 26px !important;
-    right: 58px !important;
+    width: 24px !important;
+    height: 24px !important;
+    right: 92px !important;
     z-index: 10 !important;
   }
   
-  /* Ensure search container has room for icons */
+  /* Ensure search container has room for all icons */
   .search-input-container,
   .search-input-container._0_search-input-container._0_no_multiline {
-    padding-right: 110px !important;
+    padding-right: 130px !important;
   }
   
   /* Ensure search input has padding on mobile */
   input#searchBar,
   input[type="search"],
   input.search-input {
-    padding-right: 110px !important;
+    padding-right: 130px !important;
   }
   
   /* Fix search button to stay inside and aligned - ONLY for search, not assistant */
@@ -787,12 +787,20 @@ nav[class*="search"] a.--active,
     justify-content: center !important;
   }
   
-  /* Clear button positioning on mobile */
+  /* Clear button positioning on mobile - place it between capy and search */
   button[aria-label*="Clear"],
   .clear-button {
     position: absolute !important;
-    right: auto !important;
-    left: auto !important;
+    right: 50px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    padding: 4px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   
   /* Prevent icons from becoming huge - but not logos */
