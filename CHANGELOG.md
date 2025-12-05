@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.0.4] - 2025-12-05
+
+### Fixed
+- **Mobile search bar layout** - Fixed button positioning with proper spacing for capy logo, clear button, and search button
+- **Mobile button stacking** - Resolved overlapping buttons by adjusting positions: capy logo at 92px, clear button at 50px, search button at 8px
+- **Mobile search input padding** - Increased padding to 130px to accommodate all icons without text overlap
+
+### Changed
+- Capy logo size reduced to 24px on mobile for better spacing
+- Clear button now positioned between capy logo and search button
+- Mobile search container padding optimized for icon layout
+
+### Technical Details
+- Adjusted icon positioning: capy logo `right: 92px`, clear button `right: 50px`, search button `right: 8px`
+- Increased mobile padding from 110px to 130px to prevent icon overlap
+- All buttons now use absolute positioning with proper transforms for vertical centering
+
 ## [1.0.3] - 2025-12-04
 
 ### Fixed
