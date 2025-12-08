@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.0.7] - 2025-12-08
+
+### Fixed
+- **Assistant page text alignment** - Fixed text being centered/moved to the right in assistant chat after Kagi selector changes
+- **Assistant page isolation** - Excluded assistant pages from all global container width rules that were causing layout issues
+- **Mobile icon alignment on search results** - Fixed capy logo, clear button, and magnifier stacking on mobile search results page
+- **Desktop magnifier icon size** - Fixed search/magnifier button icon being crushed to pixel size on desktop
+
+### Changed
+- Mobile icon positioning: Clear button at `right: 72px`, Capy at `right: 42px`, Search button at `right: 8px`
+- Desktop button SVG icons now explicitly sized at 20x20px
+- Input padding adjusted to `80px` on mobile to accommodate icon group
+
+### Technical Details
+- Added `html:not([data-path*="assistant"])` prefix to global container rules (lines 74-100, 134-145)
+- Scoped `.center-content-box`, `div[class*="container"]`, and width rules to exclude assistant pages
+- Added search results page specific button positioning with `body:has(._0_SRI.search-result)` selectors
+- Removed generic SVG size restrictions from button icons
+- Consolidated mobile icon positioning in @media query at line 577
+
 ## [1.0.6] - 2025-12-05
 
 ### Fixed

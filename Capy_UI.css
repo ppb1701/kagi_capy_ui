@@ -1,5 +1,5 @@
 /************************************************************
- * Kagi Capy UI (1.0.6) 2025-12-5
+ * Kagi Capy UI (1.0.7) 2025-12-08
  * - Tricorn Black bg (#1c1d21)
  * - Onyx surfaces (#36383f)  
  * - Electric blue accent (#1e80c7)
@@ -55,10 +55,10 @@
    ---------------------------------------------------------- */
 
 /* Only apply to search pages with main search content */
-body:has(#main.center-content-box._0_content-area.results-box),
-body:has(.search-form-wrapper),
-body:has(#searchForm),
-body:has(._0_SRI.search-result) {
+html:not([data-path*="assistant"]) body:has(#main.center-content-box._0_content-area.results-box),
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper),
+html:not([data-path*="assistant"]) body:has(#searchForm),
+html:not([data-path*="assistant"]) body:has(._0_SRI.search-result) {
   background-color: var(--capy-bg) !important;
   background-image:
     radial-gradient(circle at top,
@@ -71,28 +71,28 @@ body:has(._0_SRI.search-result) {
   background-attachment: fixed !important;
 }
 
-#layout-v2,
-#app,
-#root,
-#__next,
-.app-root,
-main,
-.content,
-.app-box-center,
-.app-content,
-.app-content-box,
-.center-content-box,
-.search-results,
-.serp-container,
-[class*="results"],
-[class*="serp"],
-[class*="layout"],
-[id*="layout"],
-[id*="main"],
-[class*="main"],
-div[class*="container"],
-.search-form-wrapper,
-.search_form_box {
+html:not([data-path*="assistant"]) #layout-v2,
+html:not([data-path*="assistant"]) #app,
+html:not([data-path*="assistant"]) #root,
+html:not([data-path*="assistant"]) #__next,
+html:not([data-path*="assistant"]) .app-root,
+html:not([data-path*="assistant"]) main,
+html:not([data-path*="assistant"]) .content,
+html:not([data-path*="assistant"]) .app-box-center,
+html:not([data-path*="assistant"]) .app-content,
+html:not([data-path*="assistant"]) .app-content-box,
+html:not([data-path*="assistant"]) .center-content-box,
+html:not([data-path*="assistant"]) .search-results,
+html:not([data-path*="assistant"]) .serp-container,
+html:not([data-path*="assistant"]) [class*="results"],
+html:not([data-path*="assistant"]) [class*="serp"],
+html:not([data-path*="assistant"]) [class*="layout"],
+html:not([data-path*="assistant"]) [id*="layout"],
+html:not([data-path*="assistant"]) [id*="main"],
+html:not([data-path*="assistant"]) [class*="main"],
+html:not([data-path*="assistant"]) div[class*="container"],
+html:not([data-path*="assistant"]) .search-form-wrapper,
+html:not([data-path*="assistant"]) .search_form_box {
   background-color: transparent !important;
   background-image: none !important;
   color: var(--capy-text) !important;
@@ -101,10 +101,10 @@ div[class*="container"],
 }
 
 /* Force gradient background only on search pages */
-body:has(#main.center-content-box._0_content-area.results-box)::before,
-body:has(.search-form-wrapper)::before,
-body:has(#searchForm)::before,
-body:has(._0_SRI.search-result)::before {
+html:not([data-path*="assistant"]) body:has(#main.center-content-box._0_content-area.results-box)::before,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper)::before,
+html:not([data-path*="assistant"]) body:has(#searchForm)::before,
+html:not([data-path*="assistant"]) body:has(._0_SRI.search-result)::before {
   content: "" !important;
   position: fixed !important;
   top: 0 !important;
@@ -119,10 +119,10 @@ body:has(._0_SRI.search-result)::before {
   pointer-events: none !important;
 }
 
-body:has(.search-form-wrapper) p, 
-body:has(.search-form-wrapper) span, 
-body:has(.search-form-wrapper) li, 
-body:has(.search-form-wrapper) div {
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) p, 
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) span, 
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) li, 
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) div {
   color: inherit;
 }
 
@@ -131,16 +131,16 @@ body:has(.search-form-wrapper) div {
    ---------------------------------------------------------- */
 
 /* Remove width constraints on result containers for ultrawide screens */
-._0_results_main,
-._0_main-search-results,
-._0_content-area,
-._0_left-box,
-.search-results-container,
-[class*="results-container"],
-[class*="serp-main"],
-div[class*="search-content"],
-.center-content-box,
-._0_content-bay {
+html:not([data-path*="assistant"]) ._0_results_main,
+html:not([data-path*="assistant"]) ._0_main-search-results,
+html:not([data-path*="assistant"]) ._0_content-area,
+html:not([data-path*="assistant"]) ._0_left-box,
+html:not([data-path*="assistant"]) .search-results-container,
+html:not([data-path*="assistant"]) [class*="results-container"],
+html:not([data-path*="assistant"]) [class*="serp-main"],
+html:not([data-path*="assistant"]) div[class*="search-content"],
+html:not([data-path*="assistant"]) .center-content-box,
+html:not([data-path*="assistant"]) ._0_content-bay {
   max-width: none !important;
   width: 100% !important;
 }
@@ -175,17 +175,17 @@ img[alt*="Logo"],
   aspect-ratio: 16 / 9 !important;
 }
 
-body:has(.search-form-wrapper) .card__face,
-body:has(.search-form-wrapper) ._0_SRI.search-result,
-body:has(.search-form-wrapper) ._0_provider-content,
-body:has(.search-form-wrapper) ._0_provider-content.inline-content.clearfix,
-body:has(.search-form-wrapper) .wikipediaResult,
-body:has(.search-form-wrapper) .newsResultBody,
-body:has(.search-form-wrapper) ._0_right-box,
-body:has(.search-form-wrapper) .section,
-body:has(.search-form-wrapper) .panel,
-body:has(.search-form-wrapper) .k-card,
-body:has(.search-form-wrapper) ._0_quick_answer_box {
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .card__face,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_SRI.search-result,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_provider-content,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_provider-content.inline-content.clearfix,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .wikipediaResult,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .newsResultBody,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_right-box,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .section,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .panel,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .k-card,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_quick_answer_box {
   background-color: var(--capy-surface) !important;
   background-image: none !important;
   border-radius: var(--capy-radius) !important;
@@ -193,16 +193,16 @@ body:has(.search-form-wrapper) ._0_quick_answer_box {
   box-shadow: 0 0 32px rgba(0, 0, 0, 0.7) !important;
 }
 
-body:has(.search-form-wrapper) ._0_SRI.search-result {
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_SRI.search-result {
   margin-bottom: var(--capy-gap) !important;
   padding: 12px 16px !important;
 }
 
-body:has(.search-form-wrapper) ._0_DESC,
-body:has(.search-form-wrapper) .newsResultBody,
-body:has(.search-form-wrapper) ._0_URL_VISIBLE,
-body:has(.search-form-wrapper) ._0_result-snippet,
-body:has(.search-form-wrapper) .card__face ._0_snippet {
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_DESC,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .newsResultBody,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_URL_VISIBLE,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_result-snippet,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .card__face ._0_snippet {
   color: var(--capy-text-dim) !important;
 }
 
@@ -210,17 +210,17 @@ body:has(.search-form-wrapper) .card__face ._0_snippet {
    3. Links, titles, quotes
    ---------------------------------------------------------- */
 
-body:has(.search-form-wrapper) a,
-body:has(.search-form-wrapper) .__sri_title_link,
-body:has(.search-form-wrapper) .newsResultTitle a,
-body:has(.search-form-wrapper) .card__face a {
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) a,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .__sri_title_link,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .newsResultTitle a,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .card__face a {
   color: var(--capy-accent) !important;
   text-decoration: none !important;
 }
 
-body:has(.search-form-wrapper) a:hover,
-body:has(.search-form-wrapper) .__sri_title_link:hover,
-body:has(.search-form-wrapper) .newsResultTitle a:hover {
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) a:hover,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .__sri_title_link:hover,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .newsResultTitle a:hover {
   color: var(--capy-accent-strong) !important;
   text-decoration: underline !important;
 }
@@ -244,11 +244,11 @@ blockquote::before {
    4. Top nav (Web / Images / etc tabs)
    ---------------------------------------------------------- */
 
-body:has(.search-form-wrapper) .app-nav,
-body:has(.search-form-wrapper) nav#tonav,
-body:has(.search-form-wrapper) nav.app-nav,
-body:has(.search-form-wrapper) ._0_nav-items,
-body:has(.search-form-wrapper) .serp-nav {
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .app-nav,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) nav#tonav,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) nav.app-nav,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_nav-items,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .serp-nav {
   background-color: transparent !important;
   border-bottom: 1px solid var(--capy-border) !important;
   box-shadow: none !important;
@@ -262,12 +262,12 @@ body:has(.search-form-wrapper) .serp-nav {
 }
 
 /* Style all nav items consistently */
-body:has(.search-form-wrapper) a.nav_item,
-body:has(.search-form-wrapper) a._0_query_link_item,
-body:has(.search-form-wrapper) ._0_item,
-body:has(.search-form-wrapper) .nav_item,
-body:has(.search-form-wrapper) .app-nav a,
-body:has(.search-form-wrapper) .app-nav button {
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) a.nav_item,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) a._0_query_link_item,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_item,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .nav_item,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .app-nav a,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .app-nav button {
   font-size: var(--capy-font-size-small) !important;
   color: var(--capy-text-dim) !important;
   background: transparent !important;
@@ -281,26 +281,26 @@ body:has(.search-form-wrapper) .app-nav button {
   text-decoration: none !important;
 }
 
-body:has(.search-form-wrapper) a.nav_item:hover,
-body:has(.search-form-wrapper) a._0_query_link_item:hover,
-body:has(.search-form-wrapper) ._0_item:hover,
-body:has(.search-form-wrapper) .nav_item:hover,
-body:has(.search-form-wrapper) .app-nav a:hover,
-body:has(.search-form-wrapper) .app-nav button:hover {
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) a.nav_item:hover,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) a._0_query_link_item:hover,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_item:hover,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .nav_item:hover,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .app-nav a:hover,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .app-nav button:hover {
   background: transparent !important;
   color: var(--capy-text) !important;
   border-bottom-color: var(--capy-text-dim) !important;
 }
 
-body:has(.search-form-wrapper) a.nav_item.--active,
-body:has(.search-form-wrapper) a._0_query_link_item.--active,
-body:has(.search-form-wrapper) a._0_query_link_item[aria-hidden="true"],
-body:has(.search-form-wrapper) ._0_item.--active,
-body:has(.search-form-wrapper) .nav_item.--active,
-body:has(.search-form-wrapper) .app-nav a.--active,
-body:has(.search-form-wrapper) .app-nav button.--active,
-body:has(.search-form-wrapper) a[aria-current="page"],
-body:has(.search-form-wrapper) button[aria-current="page"] {
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) a.nav_item.--active,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) a._0_query_link_item.--active,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) a._0_query_link_item[aria-hidden="true"],
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_item.--active,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .nav_item.--active,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .app-nav a.--active,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .app-nav button.--active,
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) a[aria-current="page"],
+html:not([data-path*="assistant"]) body:has(.search-form-wrapper) button[aria-current="page"] {
   background: transparent !important;
   color: var(--capy-accent) !important;
   border-bottom: 2px solid var(--capy-accent) !important;
@@ -315,13 +315,19 @@ body:has(.search-form-wrapper) button[aria-current="page"] {
    5. Search bar styling
    ---------------------------------------------------------- */
 
-/* Center search form on home page only */
-body:has(.search-form-wrapper) .search-form-wrapper,
-body:has(.search-form-wrapper) .search_form_box,
-body:has(.search-form-wrapper) .center-content-box {
+/* Center search form on home page only - but NOT on assistant */
+html:not([data-path*="assistant"]) body:has(#searchForm) .search-form-wrapper,
+html:not([data-path*="assistant"]) body:has(#searchForm) .search_form_box {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+}
+
+/* CRITICAL: Override centering for assistant - DO NOT change display property */
+html[data-path="/assistant"] .search-form-wrapper,
+html[data-path="/assistant"] .search_form_box {
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
 }
 
 /* Container styling */
@@ -390,17 +396,30 @@ input[type="text"][placeholder*="Search"] {
 }
 
 /* Keep icons at reasonable sizes - but not logos */
-.search-input-container svg,
 .search-input-container img[src*="icon"],
 .search-input-container img[src*="shield"],
 .search-input-container img[alt*="secure"],
 ._0_SRI svg,
 ._0_SRI img[src*="icon"],
-._0_SRI img[src*="shield"],
-button svg,
-button img[src*="icon"] {
+._0_SRI img[src*="shield"] {
   max-width: 20px !important;
   max-height: 20px !important;
+}
+
+/* Submit/search button icons should be visible size */
+.search-input-container button svg,
+.search-input-container button#searchFormSubmitBtn svg,
+.search-input-container button#searchFormSubmit svg,
+.search-input-container button[type="submit"] svg,
+button#searchFormSubmitBtn svg,
+button#searchFormSubmit svg,
+#searchForm button[type="submit"] svg {
+  max-width: 20px !important;
+  max-height: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
 }
 
 /* Keep Kagi branding at normal size */
@@ -569,12 +588,99 @@ button:focus,
 
 /* Make assistant send button easier to reach on mobile */
 @media (max-width: 800px) {
-  /* Override search button positioning only - NOT assistant buttons */
-  button#searchFormSubmitBtn {
+  /* Capy logo positioning - far right group */
+  .search-input-container::after {
+    right: 42px !important;
+    width: 24px !important;
+    height: 24px !important;
+    z-index: 10 !important;
+  }
+  
+  /* Search/magnifier button - furthest right */
+  .search-input-container button#searchFormSubmitBtn,
+  .search-input-container button#searchFormSubmit,
+  #searchForm button[type="submit"] {
     position: absolute !important;
     right: 8px !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
+    width: 28px !important;
+    height: 28px !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+  }
+  
+  /* Clear button (X) - left of capy logo */
+  .search-input-container button[aria-label*="Clear"],
+  .search-input-container button[aria-label*="clear"],
+  .search-input-container .clear-button,
+  .search-input-container button[class*="clear"] {
+    position: absolute !important;
+    right: 72px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 24px !important;
+    height: 24px !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+  }
+  
+  /* SEARCH RESULTS PAGE SPECIFIC - override any flex/space distribution */
+  body:has(._0_SRI.search-result) .search-input-container,
+  ._0_content-area .search-input-container {
+    display: block !important;
+    position: relative !important;
+  }
+  
+  body:has(._0_SRI.search-result) .search-input-container *,
+  ._0_content-area .search-input-container * {
+    position: static;
+  }
+  
+  /* Search results page - capy logo */
+  body:has(._0_SRI.search-result) .search-input-container::after,
+  ._0_content-area .search-input-container::after {
+    position: absolute !important;
+    right: 42px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 24px !important;
+    height: 24px !important;
+    z-index: 10 !important;
+  }
+  
+  /* Search results page - submit button on far right */
+  body:has(._0_SRI.search-result) .search-input-container button[type="submit"],
+  body:has(._0_SRI.search-result) button#searchFormSubmitBtn,
+  ._0_content-area button[type="submit"],
+  ._0_content-area button#searchFormSubmitBtn {
+    position: absolute !important;
+    right: 8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 28px !important;
+    height: 28px !important;
+    margin: 0 !important;
+    padding: 6px !important;
+  }
+  
+  /* Search results page - clear button left of capy */
+  body:has(._0_SRI.search-result) .search-input-container button[aria-label*="Clear"],
+  body:has(._0_SRI.search-result) .search-input-container button[aria-label*="clear"],
+  ._0_content-area button[aria-label*="Clear"],
+  ._0_content-area button[aria-label*="clear"] {
+    position: absolute !important;
+    right: 72px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 24px !important;
+    height: 24px !important;
+    margin: 0 !important;
+    padding: 4px !important;
   }
 }
 
@@ -729,66 +835,29 @@ nav[class*="search"] a.--active,
    ---------------------------------------------------------- */
 
 @media (max-width: 800px) {
-  body:has(.search-form-wrapper) ._0_SRI.search-result {
+  html:not([data-path*="assistant"]) body:has(.search-form-wrapper) ._0_SRI.search-result {
     border-radius: 0 !important;
     box-shadow: none !important;
     border-left: none !important;
     border-right: none !important;
   }
 
-  body:has(.search-form-wrapper) .app-nav {
+  html:not([data-path*="assistant"]) body:has(.search-form-wrapper) .app-nav {
     border-radius: 0 !important;
   }
   
-  /* Capy logo on mobile - move further left to make room */
-  .search-input-container::after {
-    width: 24px !important;
-    height: 24px !important;
-    right: 92px !important;
-    z-index: 10 !important;
-  }
-  
-  /* Ensure search container has room for all icons */
+  /* Ensure search container has room for icons on right */
   .search-input-container {
-    padding-right: 75px !important;
+    padding-right: 80px !important;
+    padding-left: 16px !important;
   }
   
   /* Ensure search input has padding on mobile */
   input#searchBar,
   input[type="search"],
   input.search-input {
-    padding-right: 75px !important;
-  }
-  
-  /* Fix search button to stay inside and aligned - ONLY for search, not assistant */
-  button#searchFormSubmitBtn,
-  button#searchFormSubmit {
-    position: absolute !important;
-    right: 8px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    margin: 0 !important;
-    padding: 6px !important;
-    min-height: auto !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-  
-  /* Clear button positioning on mobile - place it between capy and search */
-  button[aria-label*="Clear"],
-  .clear-button {
-    position: absolute !important;
-    right: 50px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    margin: 0 !important;
-    padding: 4px !important;
-    min-width: 32px !important;
-    min-height: 32px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    padding-right: 80px !important;
+    padding-left: 16px !important;
   }
   
   /* Prevent icons from becoming huge - but not logos */
