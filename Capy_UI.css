@@ -584,8 +584,6 @@ button:focus,
   }
 }
 
-/* Removed - was affecting assistant buttons */
-
 /* Make assistant send button easier to reach on mobile */
 @media (max-width: 800px) {
   /* Force ALL search containers to relative positioning and BLOCK display */
@@ -602,6 +600,19 @@ button:focus,
   .search-input-container > div {
     display: block !important;
     position: static !important;
+  }
+  
+  /* Hide ALL Kagi branding when input is focused on mobile */
+  body:has(input#searchBar:focus) img[alt*="Kagi"],
+  body:has(input#searchBar:focus) img[alt*="kagi"],
+  body:has(input#searchBar:focus) svg[alt*="Kagi"],
+  body:has(input#searchBar:focus) a[href="/"],
+  body:has(input[type="search"]:focus) img[alt*="Kagi"],
+  body:has(input[type="search"]:focus) img[alt*="kagi"],
+  body:has(input[type="search"]:focus) a[href="/"],
+  body:has(.search-input:focus) img[alt*="Kagi"],
+  body:has(.search-input:focus) a[href="/"] {
+    display: none !important;
   }
 
   /* Capy logo - ALWAYS at 52px on mobile */
