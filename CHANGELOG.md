@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.0.8] - 2025-12-11
+
+### Fixed
+- **Mobile icon grouping** - Fixed X, capy logo, and magnifier icons spreading across search bar on mobile; now tightly grouped on right side matching desktop layout
+- **Mobile text length** - Improved visible text area in search input by reducing container padding from 90px to 25px
+- **Mobile icon positioning** - Forced `.search-form-icons` container to `display: block` to prevent flexbox from distributing buttons
+- **Fix Editing search text and Kagi Logo stacking on focus** - Added rules to hide Kagi logo when editing search on mobile to prevent text overlap
+
+### Changed
+- Mobile icon positions: Clear button at `82px`, Capy at `52px` (matching desktop), Search button at `8px`
+- Search container padding reduced to `25px` while input padding set to `80px` for optimal text display
+- All mobile search contexts now use consistent icon positioning (home page, results, and edit)
+
+### Technical Details
+- Consolidated mobile icon positioning into single media query section
+- Added `.search-form-icons` display override to prevent flex distribution
+- Applied `body:has(input:focus)` selectors to hide Kagi branding on mobile when focused
+- Removed duplicate/conflicting search results page positioning rules
+
 ## [1.0.7] - 2025-12-08
 
 ### Fixed
