@@ -594,10 +594,11 @@ button:focus,
     display: block !important;
   }
   
-  /* Force icon container to NOT flex */
-  .search-form-icons,
-  ._0_search_form_icons,
-  .search-input-container > div {
+  /* Force icon container to NOT flex - only for search forms */
+  #searchForm .search-form-icons,
+  #searchForm ._0_search_form_icons,
+  body:has(#searchForm) .search-form-icons,
+  body:has(#searchForm) ._0_search_form_icons {
     display: block !important;
     position: static !important;
   }
@@ -620,7 +621,7 @@ button:focus,
   div.search-input-container::after,
   form .search-input-container::after {
     position: absolute !important;
-    right: 52px !important;
+    right: 46x !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
     width: 24px !important;
@@ -628,15 +629,14 @@ button:focus,
     z-index: 10 !important;
   }
   
-  /* ALL search/submit buttons - ALWAYS at 8px */
-  .search-input-container button#searchFormSubmitBtn,
-  .search-input-container button#searchFormSubmit,
-  .search-input-container button[type="submit"],
-  div.search-input-container button#searchFormSubmitBtn,
-  div.search-input-container button#searchFormSubmit,
-  div.search-input-container button[type="submit"],
-  #searchForm button[type="submit"],
-  form button[type="submit"] {
+  /* ALL search/submit buttons - ALWAYS at 8px - EXCLUDE assistant */
+  html:not([data-path*="assistant"]) .search-input-container button#searchFormSubmitBtn,
+  html:not([data-path*="assistant"]) .search-input-container button#searchFormSubmit,
+  html:not([data-path*="assistant"]) .search-input-container button[type="submit"],
+  html:not([data-path*="assistant"]) div.search-input-container button#searchFormSubmitBtn,
+  html:not([data-path*="assistant"]) div.search-input-container button#searchFormSubmit,
+  html:not([data-path*="assistant"]) div.search-input-container button[type="submit"],
+  #searchForm button[type="submit"] {
     position: absolute !important;
     right: 8px !important;
     top: 50% !important;
