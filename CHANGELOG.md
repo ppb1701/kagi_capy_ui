@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.9] - 2025-12-12
+
+### Fixed
+- **Assistant send button on mobile** - Fixed send button being hidden on assistant page by excluding assistant pages from mobile search button positioning rules
+
+### Technical Details
+- Added `html:not([data-path*="assistant"])` prefix to mobile submit button positioning rules
+- Removed generic `form button[type="submit"]` selector that was catching assistant forms
+- Mobile search icon positioning now only applies to search forms, not assistant chat
+
 ## [1.0.8] - 2025-12-11
 
 ### Fixed
